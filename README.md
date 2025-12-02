@@ -33,7 +33,7 @@ You should choose model hyperparameters for:
 
 
 ## Architecture details: 
-The FNO2d used Fourier Neural Operator blocks (Li et al, 2020: https://arxiv.org/abs/2010.08895). Each block transforms the input to the spectral domain using FFT, truncates at some spectral frequency, performs channel-wise transformation, inverses FFT the ourput, sums to the a linear transformation of the input, and passes the final tensor to an activation function. This architecture effectively learns dependence across spatial scales uisng an operator which is in-sensitive to sampling resolution.
+The FNO2d used Fourier Neural Operator blocks (Li et al, 2020: https://arxiv.org/abs/2010.08895). Each block transforms the input to the spectral domain using FFT, truncates at some spectral frequency, performs channel-wise transformation, inverses FFT the ourput, sums to the a linear transformation of the input, and passes the final tensor to an activation function. This architecture effectively learns dependence across spatial scales uisng an operator which is in-sensitive to sampling resolution. 
 
 ## Training
 
