@@ -13,14 +13,24 @@ import os
 import xarray as xr
 import json
 
-def load_ctd_data(data_dir, start_year, end_year):
+#def load_ctd_data(data_dir, start_year, end_year):
+#    """
+#    Load and process CTD csv files for a given year range.
+#    Returns an xarray.Dataset with dimensions (depth, station, time)).
+#    """
+#    
+#    df_all = pd.read_csv(data_dir, comment="#")
+
+
+def load_ctd_data(data_dir, start_year, end_year, nrows=None):#added PH
     """
     Load and process CTD csv files for a given year range.
     Returns an xarray.Dataset with dimensions (depth, station, time)).
+
+    nrows: optional, for testing with a subset of the data. #added PH
     """
     
-    df_all = pd.read_csv(data_dir, comment="#")
-
+    df_all = pd.read_csv(data_dir, comment="#", nrows=nrows) #added PH
     df_all["TIME"] = pd.to_datetime(df_all["TIME"], format="%Y-%m-%d %H:%M:%S")
     df_all = df_all.rename(
         columns={
@@ -212,7 +222,8 @@ def prepare_data(
     target_variable: str = "Temperature",
     bathymetry_in : xr.DataArray | None = None,  ##Changed
     train_ratio = 0.7,  ##Changed
-    val_ratio = 0.15   ##Changed
+    val_ratio = 0.15,   ##Changed
+    nrows=None, #added PH
 
 ):
     
